@@ -13,25 +13,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    fileInput.addEventListener('change', (e) => {
+    fileInput.addEventListener('change', async (e) => {
         if (e.target.files.length > 0) {
             fileName.textContent = e.target.files[0].name;
+            await uploadFile();
         } else {
             fileName.textContent = 'No file chosen';
         }
     });
 
-    uploadForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    async function uploadFile() {
         const formData = new FormData(uploadForm);
         const selectedAnimal = document.querySelector('input[name="animal"]:checked');
 
-        if (selectedAnimal) {
-            formData.append('animal', selectedAnimal.value);
-        } else {
+        if (!selectedAnimal) {
             alert('Please select an animal before uploading.');
             return;
         }
+
+        formData.append('animal', selectedAnimal.value);
 
         try {
             const response = await fetch('/upload', {
@@ -48,5 +48,5 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error:', error);
             fileInfo.innerHTML = '<p>An error occurred while uploading the file.</p>';
         }
-    });
+    }
 });
