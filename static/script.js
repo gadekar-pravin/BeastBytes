@@ -40,13 +40,21 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             const data = await response.json();
             fileInfo.innerHTML = `
-                <p>Filename: ${data.filename}</p>
-                <p>Size: ${data.size} bytes</p>
-                <p>Type: ${data.content_type}</p>
+                <p><strong>Filename:</strong> ${data.filename}</p>
+                <p><strong>Size:</strong> ${formatFileSize(data.size)}</p>
+                <p><strong>Type:</strong> ${data.content_type}</p>
             `;
         } catch (error) {
             console.error('Error:', error);
             fileInfo.innerHTML = '<p>An error occurred while uploading the file.</p>';
         }
+    }
+
+    function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
     }
 });
