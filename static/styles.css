@@ -88,16 +88,39 @@ h2 {
     gap: 20px;
 }
 
-#file-input {
-    padding: 10px;
-    border: 1px solid #bdc3c7;
-    border-radius: 4px;
-    transition: border-color 0.3s ease;
+.file-input-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
 }
 
-#file-input:focus {
-    border-color: #3498db;
-    outline: none;
+#file-input {
+    position: absolute;
+    left: -9999px;
+}
+
+.file-input-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.file-input-label:hover {
+    background-color: #2980b9;
+}
+
+.file-input-label i {
+    margin-right: 8px;
+}
+
+#file-name {
+    margin-left: 10px;
+    font-style: italic;
+    color: #7f8c8d;
 }
 
 button {

@@ -3,12 +3,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const animalImage = document.getElementById('animal-image');
     const uploadForm = document.getElementById('upload-form');
     const fileInfo = document.getElementById('file-info');
+    const fileInput = document.getElementById('file-input');
+    const fileName = document.getElementById('file-name');
 
     animalSelector.addEventListener('change', (e) => {
         if (e.target.type === 'radio') {
             const animal = e.target.value;
-            // Update the image path to include the 'images' directory
             animalImage.innerHTML = `<img src="/static/images/${animal}.jpg" alt="${animal}">`;
+        }
+    });
+
+    fileInput.addEventListener('change', (e) => {
+        if (e.target.files.length > 0) {
+            fileName.textContent = e.target.files[0].name;
+        } else {
+            fileName.textContent = 'No file chosen';
         }
     });
 
@@ -34,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>Filename: ${data.filename}</p>
                 <p>Size: ${data.size} bytes</p>
                 <p>Type: ${data.content_type}</p>
-                <p>Selected Animal: ${data.selected_animal}</p>
             `;
         } catch (error) {
             console.error('Error:', error);
