@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+}
+
+.box {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-top: 0;
+}
+
+#animal-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#animal-image {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#animal-image img {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+#upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+button {
+    cursor: pointer;
+}
+
+#file-info {
+    margin-top: 20px;
+}
